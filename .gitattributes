@@ -1,0 +1,22 @@
+# 统一换行符处理，避免实验数据在 Windows 检出时被改写而影响复现比对
+* text=auto
+
+# 文本文件强制 LF，与原始生成环境一致
+*.py    text eol=lf
+*.md    text eol=lf
+*.tex   text eol=lf
+*.bib   text eol=lf
+*.json  text eol=lf
+*.jsonl text eol=lf
+*.csv   text eol=lf
+*.txt   text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# 二进制文件不做任何转换
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.zip  binary
+*.pptx binary
+*.jlog binary
