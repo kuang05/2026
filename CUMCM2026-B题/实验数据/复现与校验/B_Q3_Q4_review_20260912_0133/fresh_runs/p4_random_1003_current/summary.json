@@ -1,0 +1,57 @@
+{
+  "problem": 4,
+  "coverage_method": "25-point compact positive-spanning triangulation",
+  "scan_point_count": 25,
+  "q3_policy": null,
+  "q4_policy": {
+    "layout": "compact",
+    "discovery_directions": 3,
+    "directional_escape": false,
+    "route_horizon": false
+  },
+  "discovered_channels": [
+    1,
+    2,
+    6,
+    7,
+    8,
+    9,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    20
+  ],
+  "absent_channels": [
+    3,
+    4,
+    5,
+    10,
+    11,
+    13,
+    19
+  ],
+  "cleared_channels": [
+    1,
+    2,
+    6,
+    7,
+    8,
+    9,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    20
+  ],
+  "unclearable_channels": [],
+  "cleared_count": 13,
+  "actions": 341,
+  "virtual_time_s": 7616.6601460286565,
+  "program_runtime_s": 6.596153599966783,
+  "failure": null
+}

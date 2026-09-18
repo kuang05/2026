@@ -1,0 +1,136 @@
+{
+  "manifest": {
+    "created_at": "2026-09-11T18:00:23.640159+00:00",
+    "python": "3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "2.5.3",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "source_root": "C:\\Users\\27740\\Desktop\\本地检查\\数学建模\\CUMCM2026Problems\\B题\\solve",
+    "config": {
+      "problem": 3,
+      "target_radius": 1800.0,
+      "max_error_deg": 1.01,
+      "min_receive_radius": 1000.0,
+      "max_receive_radius": 1500.0,
+      "clear_radius": 20.0,
+      "clear_guarantee_radius": 19.5,
+      "q3_ring_radius": 1150.0,
+      "q3_layout": "ring",
+      "q3_ring_sides": 7,
+      "q3_min_discovery_directions": 2,
+      "q3_view_travel_weight": 0.2,
+      "q3_entry_candidates": true,
+      "q3_information_floor_fraction": 0.1,
+      "q4_mesh_edge": 980.0,
+      "q4_layout": "compact",
+      "q4_min_discovery_directions": 3,
+      "q4_directional_escape": false,
+      "q4_directional_bins": 72,
+      "q4_route_horizon": false,
+      "max_source_count": 16,
+      "max_view_attempts": 8,
+      "max_actions": 10000
+    },
+    "source_files": [
+      {
+        "name": "robot.py",
+        "sha256": "2c2af48bfc506060dafe788c7019001ef66e9ec3596f7245a195e61d615078f7",
+        "size": 39436
+      },
+      {
+        "name": "geometry.py",
+        "sha256": "bb93f55f6c0aaf5c1772842075a6576b0e7489dd13a32269c581c9ff36a79381",
+        "size": 17876
+      },
+      {
+        "name": "offline_sim.py",
+        "sha256": "c1a1f767b3cd3b534b4a4dcbd268d884d36d3132f98a3479962e8b86d5968e71",
+        "size": 7772
+      },
+      {
+        "name": "test_solution.py",
+        "sha256": "e58df78441ce10f91d95c4b16c89ddb163698f682de59bd3621db77fd00bbdf6",
+        "size": 13520
+      },
+      {
+        "name": "benchmark_q3.py",
+        "sha256": "ae64da633fc5c56d55cdcaea4d84a09c47f76e7b225104771e8cd053746dcd44",
+        "size": 8046
+      },
+      {
+        "name": "benchmark_q4.py",
+        "sha256": "8523f232459fc9a541eb04bec9198a38975ff1c1066de4107cd4018d0e17f284",
+        "size": 4758
+      },
+      {
+        "name": "run_experiments.py",
+        "sha256": "5771642d01d0d69ce0706b2ab5f705373fd0950e855f4447ce633af1ad2d56c8",
+        "size": 8169
+      }
+    ]
+  },
+  "enclosing_circle_oracle": {
+    "cases": 260,
+    "failures": [],
+    "max_radius_difference_m": 4.547473508864641e-13,
+    "max_containment_violation_m": 4.547473508864641e-13
+  },
+  "bounded_regions": {
+    "base_cases": 70,
+    "disk_resolutions": [
+      360,
+      720,
+      1440
+    ],
+    "evaluations": 210,
+    "source_containment_failures": [],
+    "certified_clear_evaluations": 99,
+    "max_certified_center_error_m": 18.423577134444958,
+    "max_radius_difference_360_vs_1440_m": 0.9697785439539341,
+    "disk_outer_radial_error_1800_at_360_m": 0.06854109432659072,
+    "note": "Finite tests, not a proof of a global post-intersection error bound."
+  },
+  "coverage_geometry": {
+    "q3_points": 8,
+    "q3_ring_radius_m": 999.2013463756452,
+    "q3_continuous_worst_nearest_m": 998.7521361862536,
+    "q3_min_receive_margin_m": 1.2478638137464486,
+    "q4_points": 25,
+    "q4_outer_radius_m": 1864.5324009185595,
+    "q4_longest_triangulation_edge_m": 995.7515122133273,
+    "q4_margin_m": 4.24848778667274,
+    "q3_count_from_current_experiment_reporting_expression": 13
+  },
+  "one_bearing_fallback": {
+    "grid_points": 106,
+    "sampled_true_locations": 9331,
+    "max_nearest_clear_point_distance_m": 19.04716765557332,
+    "pass_under_20_m": true,
+    "note": "One representative long thin uncertainty set; not a full worst-case resource proof."
+  },
+  "incomplete_response_probe": {
+    "attempts": 1,
+    "exception": "IncompleteRead",
+    "configured_retries": 4,
+    "interpretation": "An IncompleteRead is not retried by the current exception handler; no real network request was sent."
+  },
+  "deadline_probe": {
+    "remaining_budget_s": 0.1,
+    "reported_elapsed_s": 2.0,
+    "actions": [
+      {
+        "path": "/enter",
+        "clock_s": 0.0
+      },
+      {
+        "path": "/measure",
+        "clock_s": 2.0
+      },
+      {
+        "path": "/exit",
+        "clock_s": 2.0
+      }
+    ],
+    "deadline_detected": false,
+    "interpretation": "Controlled clock/stub probe; the controller stores the budget but does not check it before new actions. The official server enforces its own deadline."
+  }
+}

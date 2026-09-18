@@ -1,0 +1,60 @@
+{
+  "problem": 4,
+  "coverage_method": "980 m triangular positive-spanning lattice",
+  "scan_point_count": 31,
+  "q3_policy": null,
+  "q4_policy": {
+    "layout": "legacy",
+    "discovery_directions": 2,
+    "directional_escape": false,
+    "route_horizon": false
+  },
+  "discovered_channels": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    20
+  ],
+  "absent_channels": [
+    6,
+    8,
+    18,
+    19
+  ],
+  "cleared_channels": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    20
+  ],
+  "unclearable_channels": [],
+  "cleared_count": 16,
+  "actions": 544,
+  "virtual_time_s": 11679.325136238034,
+  "program_runtime_s": 7.32213269994827,
+  "failure": null
+}

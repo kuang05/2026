@@ -1,0 +1,23 @@
+test_bounded_error_region_contains_true_source (test_solution.GeometryTests.test_bounded_error_region_contains_true_source) ... ok
+test_diameter_handles_degenerate_polygon (test_solution.GeometryTests.test_diameter_handles_degenerate_polygon) ... ok
+test_enclosing_circle_and_diameter_bounds (test_solution.GeometryTests.test_enclosing_circle_and_diameter_bounds) ... ok
+test_q2_candidate_guarantees_reception_and_crossing_angle (test_solution.GeometryTests.test_q2_candidate_guarantees_reception_and_crossing_angle) ... ok
+test_q3_cover_is_below_minimum_receive_radius (test_solution.GeometryTests.test_q3_cover_is_below_minimum_receive_radius) ... ok
+test_q3_entry_candidates_preserve_guaranteed_reception (test_solution.GeometryTests.test_q3_entry_candidates_preserve_guaranteed_reception) ... ok
+test_q3_minimax_ring_covers_target_disk_without_origin (test_solution.GeometryTests.test_q3_minimax_ring_covers_target_disk_without_origin) ... ok
+test_q3_optimized_ring_covers_target_disk (test_solution.GeometryTests.test_q3_optimized_ring_covers_target_disk) ... ok
+test_q4_compact_cover_positive_spans_every_sampled_source (test_solution.GeometryTests.test_q4_compact_cover_positive_spans_every_sampled_source) ... ok
+test_q4_mesh_positive_spans_every_sampled_source (test_solution.GeometryTests.test_q4_mesh_positive_spans_every_sampled_source) ... ok
+test_http_retry_reuses_identical_payload_and_request_id (test_solution.SimulatorAndProtocolTests.test_http_retry_reuses_identical_payload_and_request_id) ... ok
+test_location_error_is_repeatable_across_world_instances (test_solution.SimulatorAndProtocolTests.test_location_error_is_repeatable_across_world_instances) ... ok
+test_location_error_is_shared_by_every_channel_at_one_place (test_solution.SimulatorAndProtocolTests.test_location_error_is_shared_by_every_channel_at_one_place)
+The task fixes the error per place, so channels must agree there. ... ok
+test_one_unresolvable_channel_does_not_abort_the_mission (test_solution.SimulatorAndProtocolTests.test_one_unresolvable_channel_does_not_abort_the_mission)
+A channel that cannot be localized must be skipped, not fatal. ... ok
+test_q4_adaptive_discovery_keeps_directional_channel_active (test_solution.SimulatorAndProtocolTests.test_q4_adaptive_discovery_keeps_directional_channel_active)
+A found Q4 channel remains active until its bearing target is met. ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 26.530s
+
+OK

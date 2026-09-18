@@ -1,0 +1,282 @@
+{
+  "manifest": {
+    "created_at": "2026-09-11T18:03:45.253947+00:00",
+    "python": "3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "2.5.3",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "source_root": "C:\\Users\\27740\\Desktop\\本地检查\\数学建模\\CUMCM2026Problems\\B题\\solve",
+    "config": {
+      "problem": 3,
+      "target_radius": 1800.0,
+      "max_error_deg": 1.01,
+      "min_receive_radius": 1000.0,
+      "max_receive_radius": 1500.0,
+      "clear_radius": 20.0,
+      "clear_guarantee_radius": 19.5,
+      "q3_ring_radius": 1150.0,
+      "q3_layout": "ring",
+      "q3_ring_sides": 7,
+      "q3_min_discovery_directions": 2,
+      "q3_view_travel_weight": 0.2,
+      "q3_entry_candidates": true,
+      "q3_information_floor_fraction": 0.1,
+      "q4_mesh_edge": 980.0,
+      "q4_layout": "compact",
+      "q4_min_discovery_directions": 3,
+      "q4_directional_escape": false,
+      "q4_directional_bins": 72,
+      "q4_route_horizon": false,
+      "max_source_count": 16,
+      "max_view_attempts": 8,
+      "max_actions": 10000
+    },
+    "source_files": [
+      {
+        "name": "robot.py",
+        "sha256": "2c2af48bfc506060dafe788c7019001ef66e9ec3596f7245a195e61d615078f7",
+        "size": 39436
+      },
+      {
+        "name": "geometry.py",
+        "sha256": "bb93f55f6c0aaf5c1772842075a6576b0e7489dd13a32269c581c9ff36a79381",
+        "size": 17876
+      },
+      {
+        "name": "offline_sim.py",
+        "sha256": "c1a1f767b3cd3b534b4a4dcbd268d884d36d3132f98a3479962e8b86d5968e71",
+        "size": 7772
+      },
+      {
+        "name": "test_solution.py",
+        "sha256": "e58df78441ce10f91d95c4b16c89ddb163698f682de59bd3621db77fd00bbdf6",
+        "size": 13520
+      },
+      {
+        "name": "benchmark_q3.py",
+        "sha256": "ae64da633fc5c56d55cdcaea4d84a09c47f76e7b225104771e8cd053746dcd44",
+        "size": 8046
+      },
+      {
+        "name": "benchmark_q4.py",
+        "sha256": "8523f232459fc9a541eb04bec9198a38975ff1c1066de4107cd4018d0e17f284",
+        "size": 4758
+      },
+      {
+        "name": "run_experiments.py",
+        "sha256": "5771642d01d0d69ce0706b2ab5f705373fd0950e855f4447ce633af1ad2d56c8",
+        "size": 8169
+      }
+    ]
+  },
+  "status": "fresh_synthetic_audit_not_official_scores",
+  "design": {
+    "random_seeds": [
+      1001,
+      1002,
+      1003,
+      1004,
+      1005,
+      1006
+    ],
+    "stress_seeds": [
+      2001,
+      2002,
+      2003
+    ],
+    "paired_runs": 36,
+    "repeat_runs": 2,
+    "warning": "Small independent audit sample; not a confidence guarantee, a global optimum certificate, or proof of the official case distribution."
+  },
+  "groups": [
+    {
+      "problem": 3,
+      "scenario": "random",
+      "policies": {
+        "legacy": {
+          "runs": 6,
+          "all_cleared_runs": 6,
+          "coverage_min": 1.0,
+          "virtual_time_mean_s": 4858.89003790186,
+          "virtual_time_max_s": 5079.3386182561335,
+          "average_time_mean_s": 362.86080681008065,
+          "wall_runtime_mean_s": 3.0055594666822194,
+          "wall_runtime_max_s": 3.8885631000157446,
+          "actions_mean": 111.5,
+          "movement_share_mean": 0.8703649461623868,
+          "failed_clears": 3,
+          "fallback_invocations": 0,
+          "certified_clear_failures": 0,
+          "max_successful_clear_distance_m": 19.677701128517086,
+          "max_time_reconstruction_residual_s": 1.8189894035458565e-12
+        },
+        "current": {
+          "runs": 6,
+          "all_cleared_runs": 6,
+          "coverage_min": 1.0,
+          "virtual_time_mean_s": 4184.55318960624,
+          "virtual_time_max_s": 4536.557955466012,
+          "average_time_mean_s": 311.60172306990074,
+          "wall_runtime_mean_s": 4.104877199987338,
+          "wall_runtime_max_s": 5.421523500001058,
+          "actions_mean": 145.66666666666666,
+          "movement_share_mean": 0.8002457927868294,
+          "failed_clears": 3,
+          "fallback_invocations": 0,
+          "certified_clear_failures": 0,
+          "max_successful_clear_distance_m": 19.961881171463794,
+          "max_time_reconstruction_residual_s": 9.094947017729282e-13
+        }
+      },
+      "paired_time_reduction_mean": 0.13730506274232046,
+      "paired_time_reduction_min": 0.06126453747667904,
+      "current_faster_cases": 6,
+      "paired_cases": 6
+    },
+    {
+      "problem": 3,
+      "scenario": "stress",
+      "policies": {
+        "legacy": {
+          "runs": 3,
+          "all_cleared_runs": 3,
+          "coverage_min": 1.0,
+          "virtual_time_mean_s": 4559.861852189858,
+          "virtual_time_max_s": 4930.081959548536,
+          "average_time_mean_s": 284.9913657618661,
+          "wall_runtime_mean_s": 3.602893966676978,
+          "wall_runtime_max_s": 4.105342000024393,
+          "actions_mean": 127.33333333333333,
+          "movement_share_mean": 0.8412354235280716,
+          "failed_clears": 2,
+          "fallback_invocations": 0,
+          "certified_clear_failures": 0,
+          "max_successful_clear_distance_m": 17.750443782948448,
+          "max_time_reconstruction_residual_s": 2.7284841053187847e-12
+        },
+        "current": {
+          "runs": 3,
+          "all_cleared_runs": 3,
+          "coverage_min": 1.0,
+          "virtual_time_mean_s": 4250.126007927693,
+          "virtual_time_max_s": 4383.044384616483,
+          "average_time_mean_s": 265.6328754954808,
+          "wall_runtime_mean_s": 3.6209957333242833,
+          "wall_runtime_max_s": 4.018122499983292,
+          "actions_mean": 166.66666666666666,
+          "movement_share_mean": 0.774416647064902,
+          "failed_clears": 2,
+          "fallback_invocations": 0,
+          "certified_clear_failures": 0,
+          "max_successful_clear_distance_m": 19.95469552141901,
+          "max_time_reconstruction_residual_s": 1.8189894035458565e-12
+        }
+      },
+      "paired_time_reduction_mean": 0.06539256375815031,
+      "paired_time_reduction_min": -0.00037704020164718076,
+      "current_faster_cases": 2,
+      "paired_cases": 3
+    },
+    {
+      "problem": 4,
+      "scenario": "random",
+      "policies": {
+        "legacy": {
+          "runs": 6,
+          "all_cleared_runs": 6,
+          "coverage_min": 1.0,
+          "virtual_time_mean_s": 10438.623552631827,
+          "virtual_time_max_s": 11062.72919666085,
+          "average_time_mean_s": 782.1005684487566,
+          "wall_runtime_mean_s": 5.429773949988885,
+          "wall_runtime_max_s": 7.5421237999689765,
+          "actions_mean": 393.5,
+          "movement_share_mean": 0.7796989689737999,
+          "failed_clears": 7,
+          "fallback_invocations": 2,
+          "certified_clear_failures": 0,
+          "max_successful_clear_distance_m": 19.41221286969944,
+          "max_time_reconstruction_residual_s": 5.4569682106375694e-12
+        },
+        "current": {
+          "runs": 6,
+          "all_cleared_runs": 6,
+          "coverage_min": 1.0,
+          "virtual_time_mean_s": 7937.793471961841,
+          "virtual_time_max_s": 8798.930638204642,
+          "average_time_mean_s": 592.453580099053,
+          "wall_runtime_mean_s": 6.655756483339549,
+          "wall_runtime_max_s": 11.103615000029095,
+          "actions_mean": 366,
+          "movement_share_mean": 0.7394131719531756,
+          "failed_clears": 153,
+          "fallback_invocations": 3,
+          "certified_clear_failures": 0,
+          "max_successful_clear_distance_m": 19.625604283807995,
+          "max_time_reconstruction_residual_s": 4.001776687800884e-11
+        }
+      },
+      "paired_time_reduction_mean": 0.23651698381019806,
+      "paired_time_reduction_min": 0.08199632739903191,
+      "current_faster_cases": 6,
+      "paired_cases": 6
+    },
+    {
+      "problem": 4,
+      "scenario": "stress",
+      "policies": {
+        "legacy": {
+          "runs": 3,
+          "all_cleared_runs": 3,
+          "coverage_min": 1.0,
+          "virtual_time_mean_s": 11406.22498717978,
+          "virtual_time_max_s": 11940.17597502243,
+          "average_time_mean_s": 712.8890616987362,
+          "wall_runtime_mean_s": 7.94131856665869,
+          "wall_runtime_max_s": 10.736042500007898,
+          "actions_mean": 510.6666666666667,
+          "movement_share_mean": 0.7516111008008549,
+          "failed_clears": 153,
+          "fallback_invocations": 4,
+          "certified_clear_failures": 0,
+          "max_successful_clear_distance_m": 19.864751625215096,
+          "max_time_reconstruction_residual_s": 8.913048077374697e-11
+        },
+        "current": {
+          "runs": 3,
+          "all_cleared_runs": 3,
+          "coverage_min": 1.0,
+          "virtual_time_mean_s": 10026.68305843884,
+          "virtual_time_max_s": 10221.598247064543,
+          "average_time_mean_s": 626.6676911524276,
+          "wall_runtime_mean_s": 8.93934846665555,
+          "wall_runtime_max_s": 9.51914410002064,
+          "actions_mean": 566.3333333333334,
+          "movement_share_mean": 0.6997619605620351,
+          "failed_clears": 317,
+          "fallback_invocations": 7,
+          "certified_clear_failures": 0,
+          "max_successful_clear_distance_m": 19.293777970313762,
+          "max_time_reconstruction_residual_s": 1.4551915228366852e-10
+        }
+      },
+      "paired_time_reduction_mean": 0.11970318518651184,
+      "paired_time_reduction_min": 0.08616973491684356,
+      "current_faster_cases": 3,
+      "paired_cases": 3
+    }
+  ],
+  "repeatability": [
+    {
+      "problem": 3,
+      "seed": 1001,
+      "event_logs_byte_identical": true,
+      "virtual_time_difference_s": 0.0
+    },
+    {
+      "problem": 4,
+      "seed": 1001,
+      "event_logs_byte_identical": true,
+      "virtual_time_difference_s": 0.0
+    }
+  ]
+}

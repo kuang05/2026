@@ -1,0 +1,14 @@
+CUMCM 2026 高教社杯 B题 支撑材料（代码部分）
+打包时间: 2026-09-13 15:00
+
+核心代码:
+  robot.py        机器狗策略主程序（HTTP+JSON 客户端，Q1-Q4 全流程，可直接对接官方模拟器）
+  geometry.py     几何库（角锥/半平面交/凸多边形/直径/MEC/覆盖布点）
+  q4_refinement.py 问题4 精化模块
+  offline_sim.py  离线确定性回归模拟器（按官方计时规则）
+  test_solution.py 解答验证套件
+  run_experiments.py 批量实验入口
+
+其余 benchmark_*/search_*/analyze_*/build_*.py 为参数调优与实验生成脚本。
+运行环境: Python 3.8+；通用离线代码另需 numpy，实验与绘图脚本另需 scipy、matplotlib，问题4连续覆盖充分性检验与相关布局分析另需 shapely；在线HTTP接口按实现另需 requests。
+正式测试已完成。支撑材料保留模拟器导出的原始加密日志和结果元数据；统计字段记录在正式测试核对表中，代码中不含官方正式测试的解密数据。

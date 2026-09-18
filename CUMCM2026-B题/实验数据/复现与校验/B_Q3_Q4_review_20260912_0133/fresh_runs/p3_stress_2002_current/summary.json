@@ -1,0 +1,61 @@
+{
+  "problem": 3,
+  "coverage_method": "8-point optimized ring cover",
+  "scan_point_count": 8,
+  "q3_policy": {
+    "layout": "ring",
+    "ring_sides": 7,
+    "discovery_directions": 2,
+    "entry_candidates": true,
+    "information_floor_fraction": 0.1
+  },
+  "q4_policy": null,
+  "discovered_channels": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    20
+  ],
+  "absent_channels": [
+    6,
+    8,
+    18,
+    19
+  ],
+  "cleared_channels": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    20
+  ],
+  "unclearable_channels": [],
+  "cleared_count": 16,
+  "actions": 148,
+  "virtual_time_s": 4071.4105161466437,
+  "program_runtime_s": 3.5741184999933466,
+  "failure": null
+}

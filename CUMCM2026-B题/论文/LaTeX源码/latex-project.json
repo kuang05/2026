@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "contest": "cumcm",
+  "main_tex": "main.tex",
+  "template": {
+    "path": "D:\\math-modeling-skill\\math-modeling-skill-main\\tools\\latex\\assets\\templates\\cumcm",
+    "source": "D:\\math-modeling-skill\\格式要求.docx 与用户提供的 CUMCM 2026 B 题排版要求",
+    "version": "CUMCM2026 用户指定版式基线",
+    "sha256": "beffdfb2062dbc72f3d6050691ec9a3816d8f91fd85840720ddd8ec757a3ae61"
+  },
+  "template_files": {
+    "main.tex": "d606c76d66e26729d352fc81eae25c82850a5f5633c46167f626db402c7ae91b",
+    "references.bib": "c85fa9f8c7cdb3b0c8c2f394bebd7624f6ff5abdd6bac5b4f43b58e67ee7c222"
+  },
+  "resource_bindings": [
+    {
+      "source": "figures",
+      "destination": "figures",
+      "sha256": "1c22acc357e25682e853875bae4430d67ac5595b7ce5eb8fb977c7351b7fa71a",
+      "hash_mode": "tree",
+      "bound_at": "2026-09-13T08:09:34.390787+00:00"
+    },
+    {
+      "source": "tools",
+      "destination": "flowtools",
+      "sha256": "a2cf724b2fbe3974f944664b8a56791bae6f15a65fe4d91cac32dddd56625b6c",
+      "hash_mode": "tree",
+      "bound_at": "2026-09-13T08:50:01.776709+00:00"
+    },
+    {
+      "source": "CUMCM2026B_代码支撑材料",
+      "destination": "code/support",
+      "sha256": "fee955b619a232229d2b5cea76e5ebb8edd128d05e687e6c5181f9a144cd733c",
+      "hash_mode": "tree",
+      "bound_at": "2026-09-13T08:51:52.581590+00:00"
+    }
+  ],
+  "created_at": "2026-09-12T16:25:27.739351+00:00"
+}

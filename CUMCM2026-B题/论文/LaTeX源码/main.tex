@@ -1,0 +1,845 @@
+\documentclass[UTF8,12pt,a4paper]{ctexart}
+
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{amsmath,amssymb}
+\usepackage{array,booktabs,tabularx,longtable}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{fvextra}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{etoolbox}
+
+\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\setmainfont{Times New Roman}
+\setmonofont{Consolas}
+\setCJKfamilyfont{hei}{SimHei}
+\setCJKfamilyfont{song}{SimSun}
+\renewcommand{\CJKrmdefault}{song}
+\renewcommand{\heiti}{\CJKfamily{hei}}
+\renewcommand{\songti}{\CJKfamily{song}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\enquote}[1]{“#1”}
+\newcommand{\keywords}[1]{\par\noindent{\heiti 关键词：}\mbox{#1}\par}
+\newcommand{\bodytablefont}{\songti\fontsize{12.05pt}{14.45pt}\selectfont}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+\renewenvironment{abstract}{%
+  \begin{center}
+  {\heiti\fontsize{14pt}{20pt}\selectfont 摘要}
+  \end{center}
+  \begingroup\fontsize{12pt}{17pt}\selectfont
+}{%
+  \endgroup
+}
+
+\titleformat{\section}
+  {\centering\heiti\fontsize{14pt}{20pt}\selectfont}
+  {\chinese{section}、}{0pt}{}
+\titleformat{\subsection}
+  {\raggedright\heiti\fontsize{12pt}{18pt}\selectfont}
+  {\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\raggedright\heiti\fontsize{12pt}{18pt}\selectfont}
+  {\thesubsubsection}{1em}{}
+\titlespacing*{\section}{0pt}{12pt}{8pt}
+\titlespacing*{\subsection}{0pt}{9pt}{4pt}
+\titlespacing*{\subsubsection}{0pt}{7pt}{3pt}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+\linespread{1.38}
+\renewcommand{\arraystretch}{1.38}
+\AtBeginEnvironment{tabular}{\centering\bodytablefont}
+\AtBeginEnvironment{tabularx}{\centering\bodytablefont}
+\AtBeginEnvironment{longtable}{\centering\bodytablefont}
+\setlength{\emergencystretch}{2em}
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\arabic{section}-\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+\DeclareCaptionLabelFormat{cnfigure}{图\hspace{0.25em}#2：}
+\DeclareCaptionLabelFormat{cntable}{表\hspace{0.25em}#2：}
+\captionsetup{font=small,labelfont=normalfont,textfont=normalfont,labelformat=default,labelsep=space,justification=centering}
+\captionsetup[figure]{labelformat=cnfigure}
+\captionsetup[table]{labelformat=cntable}
+\graphicspath{{../figures/}{figures/}}
+\fvset{fontsize=\scriptsize,frame=single,numbers=left,numbersep=4pt,formatcom=\songti,breaklines=true,breakanywhere=true,breaksymbolleft={},breaksymbolright={}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\pagenumbering{arabic}
+
+\begin{document}
+
+\begin{center}
+{\heiti\fontsize{16pt}{22pt}\selectfont 基于保守可行域与连续覆盖判据的无线电干扰源自动定位与清除}
+\end{center}
+\vspace{0.6em}
+\begin{abstract}
+\noindent\hspace*{2em}无线电干扰源的自动定位同时受到测向误差，接收半径不确定，频道未知和定向发射等因素影响。题面只给出误差界与半径范围，不能把一次测量当作服从某个已知概率分布。本文把定位，发现，清除和路径安排分成相互约束的四层，并用解析判据，保守集合和离线回归分别核对安全性与效率。
+
+{\heiti 针对问题一：}把每次测向结果表示为闭角楔，将多次观测，目标圆域和接收半径上界相交得到保守可行域。对满足题面约束的合成实例，定位域有5个顶点，直径为44.434748\,m，最小覆盖圆半径为22.662939\,m；有一个顶点超出直径圆4.507831\,m，因此不能用直径的一半直接作为清除依据。
+
+{\heiti 针对问题二：}先将首测位置域平移并旋转到标准坐标，再求所有可能源均能收到信号的第二点区域，并加入连续最坏交会角不低于30°的条件。40\,m网格得到28个可行点，选定点为(760.000，-626.179)\textit{m}，最大接收距离为986.333\,m，连续最坏交会角为38.667545°。
+
+{\heiti 针对问题三：}用半径998.924638\,m的7点正多边形环覆盖目标圆域，解析计算表明6点同族布局的最坏距离为1039.230485\,m，无法满足1000\,m下限。结合保守定位，保证清除区域和19.11\,m三角格兜底，50局独立离线留出实验全部清除，平均每源时间为297.205\,s，相对已优化基线平均降低4.1550\%，区间为2.7846\%至5.3846\%。三次正式测试共清除38个源，平均定位清除时间为281.093\,s/个，结果与原始加密日志及结果元数据逐一对应。
+
+{\heiti 针对问题四：}用原点，半径996\,m的8点内环和半径1863.756\,m的12点外环组成21点扫描集，在给定的保守几何检验设置下，验证其对任意定向半平面都能保留正向接收点。55局重放和另一组24局共享误差压力集均全部清除，平均降时分别为1.157\%和1.126\%。三次正式测试共清除33个源，平均定位清除时间为583.260\,s/个，结果与原始加密日志及结果元数据逐一对应。
+
+\end{abstract}
+\keywords{有界误差定位；连续覆盖；定向源搜索；最小覆盖圆；安全调度}
+\thispagestyle{fancy}
+\clearpage
+
+\section{问题重述}
+
+\subsection{问题背景}
+
+题目研究圆形区域内无线电干扰源的快速自动定位与清除。机器狗从区域中心出发，通过移动，切换频道和测量逐步获取信息，再在靠近源的位置进行光学定位和激光清除。每个干扰源占用一个频道，且不同干扰源的频道不重复；频道是否存在，源的位置和有效接收半径均需要通过过程中的反馈判断。问题的难点不在于一次测量给出一个坐标，而在于整个过程中不能因为误差或定向发射而把真实源排除。
+
+目标区域为以原点为中心，半径1800\,m的圆域。源数在10至16个之间，每个源占用1至20号频道中的一个不同频道。机器狗最高移动速度为5\,m/s，一次检测耗时5\,s，切换频道另耗时1\,s。正常接收时返回从检测点指向源的示向度，示向误差不超过1°，同一地点重复检测不产生新的误差样本。源的有效接收半径属于1000\,m至1500\,m，且定向源可能在检测点处因发射方向背向而无信号。
+
+当机器狗距源不超过5\,m且处于有效接收角内时，接口返回距离过近。清除点距目标源不超过20\,m即成功。按本文的动作计时口径，失败清除耗时3\,s，成功清除耗时5\,s，其中包括3\,s的光学定位和2\,s的激光清除。问题三和问题四要求在确保全部干扰源被清除的前提下缩短总虚拟时间，因此本文把完整性作为硬约束，把路径和动作安排作为次级优化目标。
+
+\subsection{问题提出}
+
+{\heiti 问题一：}根据多次测向点和示向度，给出能够包含真实源的定位区域，计算区域直径，并判断以该直径为直径，以直径端点中点为圆心的圆能否覆盖该区域。
+
+{\heiti 问题二：}在只有一次有效观测的情况下，选择第二个检测点，使再次接收具有保证，并使两条测向线的交会几何尽量稳定。
+
+{\heiti 问题三：}针对全向发射源，设计完整的频道扫描，保守定位，清除和路径调度方案，使任意目标位置都能被发现，并在保证全部清除的条件下减少虚拟时间。
+
+{\heiti 问题四：}针对未知发射方向的定向源，设计能够覆盖任意正向半平面的扫描集，处理正负观测共同产生的约束，并给出带安全兜底的在线调度方案。
+
+\subsection{总体问题分析}
+
+四个问题可看作同一条安全链的逐级扩展。问题一先回答\enquote{观测后哪些位置仍可能是真源}，问题二把一次观测后的可能位置域转化为保证再次接收的第二点集合，问题三在全向条件下用连续圆覆盖保证至少得到一次正反馈，问题四再把圆覆盖改成对任意发射方向都有效的正向包围。最后，只有在安全集合和覆盖判据不变的前提下，才使用路线优化缩短时间。总体流程如图\ref{fig:overall-flow}所示，图中每一步的输出都成为下一步的约束，而不是只作为经验性的排序指标。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth]{flow-overall.pdf}
+\caption{总体建模与求解流程}
+\label{fig:overall-flow}
+\end{figure}
+
+图\ref{fig:overall-flow}把本文的判据顺序画成从输入到调度的单向流程。保守定位和连续发现负责防止漏源，保证清除负责防止误报成功，时间调度只在前三层通过后改变访问顺序。
+
+\section{问题分析与总体路线}
+
+\subsection{问题一分析}
+
+题面给出的是硬误差界，而不是均值，方差或独立性。若把示向度直接代入最小二乘交会，得到的点在极限误差下可能偏离真实源；若再以概率阈值删除位置，就无法保证清除。因此本文把一次示向度变成由两条半平面组成的闭角楔，把所有尚未被证明不可能的位置保留下来。集合的缩小来自明确的题面约束，不能来自一个未经给出的概率模型。
+
+\subsection{问题二分析}
+
+问题二只有一次有效示向观测，第二检测点既要对一次观测得到的全部可能源位置保证接收，又要避免两条测向线接近平行。本文把保证接收作为硬约束，把连续最坏交会角和移动距离作为排序指标，先筛掉没有接收保证的点，再从剩余候选点中选择交会几何较稳定的位置。
+
+\subsection{问题三分析}
+
+问题三面对全向源，扫描点必须连续覆盖整个目标圆域，频道轮询也必须覆盖全部可能频道。本文先用正多边形环的极小极大距离公式确定七点扫描集，再把保守定位，保证清除和路径调度接入在线流程。覆盖判据先固定安全层，2-opt和滚动重排只用于减少无效移动与重复动作。
+
+\subsection{问题四分析}
+
+问题四的定向源可能因发射方向背向而无信号，因此普通圆覆盖不足以保证发现。本文用内环，外环和中心点构成21点扫描集，以局部扫描点的凸包包含源位置作为正向包围的充分判据；正负观测只删除能够严格证明不相容的位置单元，有限前瞻和服务点选择只改变访问顺序。
+
+本文的数值证据分为四层。第一层是题目给出的误差，半径和计时约束。第二层是解析式或计算机辅助的充分性检验，回答连续覆盖和完整性问题。第三层是固定种子的离线合成回归，用于比较策略和发现实现错误。第四层是官方接口演练，负责核对通信链路；正式测试必须依据模拟器界面和原始加密日志填写，不能用离线实验代替。
+
+\section{模型假设}
+
+以下条件用于界定模型适用范围。题面已明确给出的参数不再被包装成经验假设，表\ref{tab:assumptions}只列出它们在模型中的作用及失效后果。
+
+\begin{table}[H]
+\centering
+\caption{模型假设及其影响}
+\label{tab:assumptions}
+\bodytablefont
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.38}
+\begin{tabularx}{\linewidth}{*{4}{C}}
+\toprule
+编号 & 条件 & 作用范围 & 违反后的影响 \\
+\midrule
+H1 & 源位置不变且与机器狗同平面 & 全文 & 角楔交会和路程计算失效 \\
+H2 & 示向误差绝对值不超过1° & 全文 & 真实源可能被排除 \\
+H3 & 接收半径为1000至1500\,m & 问题二至问题四 & 保证接收和正负观测失效 \\
+H4 & 接口按题面计时和重试执行 & 问题三和问题四 & 时间和完整性无法复算 \\
+H5 & 圆盘用内外多边形夹逼 & 数值几何 & 仅给出区间，不作精确值 \\
+H6 & 30°门槛和时间权重作排序 & 问题二至问题四 & 只改候选顺序，不改接收 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+表\ref{tab:assumptions}中H2和H3直接决定保守域的边界，H5决定保守几何检验的误差方向，H6只参与效率优化。题面规定不同源占用不同频道，因此一个频道最多对应一个未清除源，这一事实在问题三和问题四的频道状态更新中直接使用。题面没有给出路径损耗指数，本文不额外拟合场强函数，只使用接收半径的上下界。
+
+\section{符号说明}
+
+\begin{table}[H]
+\centering
+\caption{主要符号说明}
+\label{tab:symbols}
+\bodytablefont
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.38}
+\begin{tabularx}{\linewidth}{*{4}{C}}
+\toprule
+符号 & 含义 & 单位 & 类型 \\
+\midrule
+$\Omega$ & 半径$R=1800\,m$的目标圆域 & $m^2$ & 已知集合 \\
+$\vect{s}_{i}$ & 第$i$个检测点 & $m$ & 已知向量 \\
+$\vect{z}$ & 干扰源位置 & $m$ & 未知向量 \\
+$\theta_i$ & 第$i$次返回的示向度 & ° & 观测量 \\
+$\varepsilon$ & 示向误差半角，取1° & ° & 已知参数 \\
+$\rho$ & 某源有效接收半径 & $m$ & 未知参数 \\
+$F$ & 当前观测相容的保守位置域 & $m^2$ & 状态集合 \\
+$D(F)$ & 可行域直径 & $m$ & 派生量 \\
+$(\vect{c}^{*},r^{*})$ & 可行域最小覆盖圆圆心与半径 & $m$ & 派生量 \\
+$P$ & 扫描点集合 & $m$ & 决策集合 \\
+$\vect{u}$ & 定向源发射方向单位向量 & 1 & 未知向量 \\
+$L$ & 累计移动距离 & $m$ & 结果量 \\
+$N_m,N_s$ & 检测次数和切频次数 & 次 & 结果量 \\
+$N_c,N_f$ & 成功和失败清除次数 & 次 & 结果量 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+表\ref{tab:symbols}统一全文的位置，误差和时间符号。向量用黑体表示，变量和单位在数学环境中保持斜体。问题三和问题四按题面动作计时定义虚拟时间为
+{\setlength{\abovedisplayskip}{4pt}
+\setlength{\belowdisplayskip}{4pt}
+\begin{equation}
+T=\frac{L}{5}+5N_m+N_s+5N_c+3N_f
+\label{eq:time}
+\end{equation}}
+其中移动速度单位为$m/s$，成功和失败清除分别计5\,s和3\,s。同时记录每源时间$\overline{T}=T/N_c$，完整清除比例和程序运行时间。离线实验用隐藏真值核对完整清除比例；官方演练缺少真源总数时，只报告已清除源数量与每源时间。
+
+\section{问题一模型的建立与求解}
+
+\subsection{问题一分析}
+
+问题一的核心不是找一个最可能坐标，而是保留所有符合误差界的位置。本文以闭角楔表示每次示向观测，再与目标圆域和接收半径上界相交。由于相交后的边界可能包含圆弧，几何计算同时给出多边形近似和内外夹逼\textsuperscript{\normalfont\cite{sutherland,deberg}}，最后用顶点对与最小覆盖圆回答直径圆是否足够\textsuperscript{\normalfont\cite{welzl}}。输出核验结果同时包含直径端点，点积判据和最小覆盖圆，三条信息用于相互核对。这样可以避免把一个程序返回的半径数值直接当作清除授权。
+
+\subsection{单次观测的闭角楔}
+
+令$\vect{u}(\alpha)=(\mathit{cos}\alpha,\mathit{sin}\alpha)^{\mathsf T}$，二维叉积记为$cr(\vect{a},\vect{b})=a_xb_y-a_yb_x$。第$i$次检测点为$\vect{s}_i$，返回示向度为$\theta_i$，则真实射线方位属于$[\theta_i-\varepsilon,\theta_i+\varepsilon]$，真源必位于闭角楔
+\begin{equation}
+S_i=\left\{\vect{x}: cr\left(\vect{u}(\theta_i-\varepsilon),\vect{x}-\vect{s}_i\right)\geq0,\quad cr\left(\vect{u}(\theta_i+\varepsilon),\vect{x}-\vect{s}_i\right)\leq0\right\}
+\label{eq:q1-wedge}
+\end{equation}
+式\eqref{eq:q1-wedge}使用叉积而不是斜率，因而不需要单独处理竖直射线和0°至360°跨界。多次观测的纯角楔交为
+\begin{equation}
+P=\bigcap_{i=1}^{m}S_i
+\label{eq:q1-angle-domain}
+\end{equation}
+程序将空集，无界集，点，线段和非退化凸多边形分别标记，不能把空集时返回的数值0解释为精确定位。
+
+\subsection{距离约束与保守可行域}
+
+正常返回示向度意味着源在目标圆域内，且距该检测点不超过实际接收半径。实际半径最大为1500\,m，所以不会排除真源的增强可行域为
+\begin{equation}
+K=P\cap\Omega\cap\bigcap_{i=1}^{m}B(\vect{s}_i,1500)
+\label{eq:q1-domain}
+\end{equation}
+其中$B(\vect{s}_i,1500)$表示以检测点为圆心的闭圆盘。程序对圆盘使用内接正多边形和外切正多边形，分别得到$K_N^{-}\subseteq K\subseteq K_N^{+}$。当直径或覆盖圆半径的上下界宽度超过容差时，将边数加倍。
+
+\subsection{直径与直径圆判据}
+
+设有界凸多边形的顶点按逆时针排列为$V=\{\vect{v}_1,\ldots,\vect{v}_h\}$，其直径满足
+\begin{equation}
+D=\mathop{\mathit{max}}_{1\leq i<j\leq h}\left\|\vect{v}_i-\vect{v}_j\right\|_2
+\label{eq:q1-diameter}
+\end{equation}
+任取多边形内两点$\vect{x}=\sum_i\lambda_i\vect{v}_i$与$\vect{y}=\sum_j\mu_j\vect{v}_j$，由三角不等式有
+\begin{equation}
+\left\|\vect{x}-\vect{y}\right\|_2\leq\sum_{i,j}\lambda_i\mu_j\left\|\vect{v}_i-\vect{v}_j\right\|_2\leq D
+\label{eq:q1-convex-diameter}
+\end{equation}
+因此直径由某一顶点对达到。当前顶点数较少，程序枚举全部顶点对，便于复核；大规模凸多边形可以改用旋转卡壳。
+
+若达到直径的端点为$\vect{A}$和$\vect{B}$，中点为$\vect{M}=(\vect{A}+\vect{B})/2$，以$D/2$为半径的圆若同时包含端点，其圆心只能是$\vect{M}$。因此所有顶点满足下式时且仅当直径圆覆盖定位域
+\begin{equation}
+\left\|\vect{v}-\vect{M}\right\|_2\leq\frac{D}{2}\quad\Longleftrightarrow\quad(\vect{v}-\vect{A})\cdot(\vect{v}-\vect{B})\leq0
+\label{eq:q1-diameter-check}
+\end{equation}
+程序还独立计算最小覆盖圆$(\vect{c}^{*},r^{*})$。若$r^{*}>D/2$，直径圆不能覆盖整个可行域。
+
+\subsection{问题一结果与敏感性分析}
+
+题面没有提供问题一的固定坐标，以下数值来自满足题面范围的合成实例，只用于验证算法和回答几何命题。图\ref{fig:q1-localization}左侧给出检测点，合成真值和定位域，右侧放大显示直径圆，最小覆盖圆以及外逸见证点。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\linewidth]{image1.png}
+\caption{问题一有界误差定位域及直径圆覆盖判据}
+\label{fig:q1-localization}
+\end{figure}
+
+图\ref{fig:q1-localization}中直径端点之一为$\vect{A}=(441.817761,653.100136)\,m$。另一端点为$\vect{B}=(402.382320,673.576777)\,m$，故$D=44.434748\,m$。顶点$\vect{V}=(424.343246,689.969352)\,m$到中点的距离为26.725205\,m，比$D/2=22.217374\,m$大4.507831\,m。最小覆盖圆半径为22.662939\,m，且$2r^{*}/D=1.020055>1$。因此该合成实例构成一个合法反例，说明清除授权不能只使用定位域直径的一半。
+
+\begin{table}[H]
+\centering
+\caption{问题一角误差界与圆盘离散敏感性}
+\label{tab:q1-sensitivity}
+\bodytablefont
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.38}
+\begin{tabularx}{\linewidth}{*{5}{C}}
+\toprule
+误差半角 & 圆盘边数 & 直径/$m$ & 最小圆半径/$m$ & 真值保留 \\
+\midrule
+0.50° & 720 & 14.990647 & 7.691357 & 否 \\
+1.00° & 720 & 44.434748 & 22.662939 & 是 \\
+1.01° & 720 & 44.932646 & 22.903336 & 是 \\
+1.50° & 720 & 69.392586 & 34.871940 & 是 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+表\ref{tab:q1-sensitivity}表明，误差界增大时保守域单调扩大，0.50°会排除合成真值，1°及以上能够保留真值。另一个圆弧边界压力实例中，圆盘边数由360,720增加到1440时，直径夹逼宽度分别为0.087596,0.021976和0.005484\,m，约按四分之一缩小。这个结果支持采用内外夹逼，而不是只使用一侧多边形近似。
+
+\subsection{夹逼误差与结果使用边界}
+
+圆盘边界离散化只是为了便于计算，并不改变可行域的定义。内接多边形位于真实圆盘内，外切多边形包含真实圆盘，所以它们与同一组角楔，目标圆域相交后仍满足
+\begin{equation}
+K_N^{-}\subseteq K\subseteq K_N^{+},\qquad
+D(K_N^{-})\leq D(K)\leq D(K_N^{+})
+\label{eq:q1-bracket}
+\end{equation}
+这个包含关系给出了数值结果的使用边界。内侧结果是可行域的保守下界，外侧结果用于确认没有遗漏可能位置。只有当两侧的直径或最小覆盖圆半径之差小于设定容差时，正文才报告相应的小数值；若区间仍然较宽，程序会增加圆盘边数，不会直接采用其中一侧。
+
+问题一的输出不能脱离后续清除条件使用。直径只描述两个最远可行位置的距离，不能保证以直径中点为圆心的圆包含整个区域；式\eqref{eq:q1-diameter-check}才是逐顶点的必要充分判据。真正发送清除指令前，还要把保守定位域压缩到清除半径以内，或者在服务区域内选择并复核清除点。因此，几何计算回答的是\enquote{哪些位置仍可能是真源}，并不直接等同于发送清除指令的条件。
+
+这里的1500\,m是保全信息的上界，而不是对真实距离的估计。正常返回示向度只能说明真实源没有超出其实际接收半径，而该半径可能位于1000\,m至1500\,m之间。用1500\,m构造式\eqref{eq:q1-domain}不会误删可能位置；若直接使用1000\,m，反而可能把真实源排除在定位域外。这个区别也解释了为什么问题一的定位域适合做后续筛选，却不能直接当作清除点。
+
+实际计算先裁剪角楔和目标圆域，再逐次加入圆盘约束，并在每次裁剪后检查顶点数量，面积和有界性。若相邻两次边数加倍得到的直径与最小覆盖圆半径均已稳定，程序才输出小数结果；若出现空集，退化线段或夹逼区间过宽，则只记录状态，不把数值0或单侧近似写成定位结论。这样处理可以把几何退化和数值误差从正常结果中区分出来。
+
+\section{问题二模型的建立与求解}
+
+\subsection{问题二分析}
+
+问题二只有一次有效测向，第二检测点既要落在所有可能源的保证接收区域内，又要避免两条视线接近平行。本文先标准化首测坐标，再求保证接收集合，随后对连续最坏交会角进行边界分析和网格评估。该几何条件与传感器定位交会角的稳定性分析一致\textsuperscript{\normalfont\cite{bishop}}。计算时先做保证接收和交会角门槛筛选，再做软目标排序。这样即使排序权重改变，第二点仍保留对所有可能源的接收保证。
+
+\subsection{一次观测域与坐标标准化}
+
+若首检测已经返回距离过近，则可以在首点直接清除，不需要选第二点。对正常示向度情形，设首点为$\vect{s}_1$，读数为$\theta$，一次观测保守域为
+\begin{equation}
+F_1=\Omega\cap B(\vect{s}_1,1500)\cap S(\vect{s}_1,\theta)
+\label{eq:q2-domain}
+\end{equation}
+先平移$-\vect{s}_1$，再旋转$-\theta$，可把首点和中心示向度变为原点和0°。求得标准坐标第二点$\vect{p}'$后，用$\vect{p}=\vect{s}_1+R(\theta)\vect{p}'$还原。正文中的数值坐标均为标准化示例。
+
+\subsection{保证接收区域}
+
+源的有效接收半径至少为1000\,m。如果第二点$\vect{p}$对$F_1$中所有可能源都满足距离不超过1000\,m，则第二次检测必定能够收到信号。保证接收区域定义为
+\begin{equation}
+C_{\mathrm{rec}}=\left\{\vect{p}:\mathop{\mathit{max}}_{\vect{z}\in F_1}\left\|\vect{p}-\vect{z}\right\|_2\leq1000\right\}=\bigcap_{\vect{z}\in F_1}B(\vect{z},1000)
+\label{eq:q2-receive}
+\end{equation}
+距离函数关于$\vect{z}$是凸函数，在紧凸多边形上的最大值由顶点达到，所以程序只需检查$F_1$的顶点。式\eqref{eq:q2-receive}同时使用了半径下限1000\,m和正观测带来的1500\,m上限。
+
+\subsection{连续最坏交会角与候选排序}
+
+设两条视线的锐交会角为$\gamma$，以连续最坏角衡量第二点的定位几何
+\begin{equation}
+\overline{\gamma}(\vect{p})=\mathop{\mathit{inf}}_{\vect{z}\in F_1}\gamma(\vect{z};\vect{s}_1,\vect{p}),\quad
+\gamma=\mathit{arcsin}\frac{\left|(\vect{z}-\vect{s}_1)\times(\vect{z}-\vect{p})\right|}{\left\|\vect{z}-\vect{s}_1\right\|_2\left\|\vect{z}-\vect{p}\right\|_2}
+\label{eq:q2-angle}
+\end{equation}
+本文设置工程门槛$\overline{\gamma}(\vect{p})\geq30°$，但它不改变保证接收硬约束。候选点排序目标为
+\begin{equation}
+J(\vect{p})=\overline{\gamma}(\vect{p})-0.002\left\|\vect{p}-\vect{s}_1\right\|_2,\quad \vect{p}\in C_{\mathrm{rec}}
+\label{eq:q2-objective}
+\end{equation}
+在标准坐标中令源为$r(\mathit{cos}\phi,\mathit{sin}\phi)$，第二点为$(d,\delta)$，则
+\begin{equation}
+\mathit{sin}\gamma=\frac{d\left|\mathit{sin}(\delta-\phi)\right|}{\sqrt{r^2+d^2-2rd\mathit{cos}(\delta-\phi)}}
+\label{eq:q2-angle-reduction}
+\end{equation}
+对固定角差，分母平方关于$r$为凸二次函数，区间$[5,1500]$上的最大值出现在端点。程序进一步检查$\phi=\pm1°$，共线零点和可微驻点，避免只查角度端点而遗漏严格为0°的共线情形。
+
+\subsection{候选点结果与网格敏感性}
+
+图\ref{fig:q2-candidates}左侧展示首测保守源域，右侧展示满足连续30°门槛的候选点及其最坏交会角。候选点位于首示向线两侧，既远离同向基线，又未离开保证接收区域。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\linewidth]{image2.png}
+\caption{问题二保证接收且满足连续交会角约束的第二检测点候选区域}
+\label{fig:q2-candidates}
+\end{figure}
+
+图\ref{fig:q2-candidates}中40\,m网格共有28个连续可行候选点，目标函数选择$(760.000,-626.179)\,m$，移动距离为984.733\,m，连续最坏交会角为38.667545°，到一次观测域的最大距离为986.333\,m。由此，第二点既不会因接收半径取1000\,m而失去信号，也不会落在同向基线的退化位置。
+
+\begin{table}[H]
+\centering
+\caption{问题二网格敏感性}
+\label{tab:q2-sensitivity}
+\bodytablefont
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.38}
+\begin{tabularx}{\linewidth}{*{5}{C}}
+\toprule
+网格/$m$ & 候选数 & 选定点/$m$ & 最坏角 & 最大距离/$m$ \\
+\midrule
+20 & 109 & $(760,633.821)$ & 39.009485° & 991.404589 \\
+40 & 28 & $(760,-626.179)$ & 38.667545° & 986.333438 \\
+80 & 6 & $(760,-626.179)$ & 38.667545° & 986.333438 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+表\ref{tab:q2-sensitivity}显示，40\,m和80\,m网格得到同一个最优点，20\,m网格得到关于首示向线近似镜像的点。三个网格均满足30°门槛和1000\,m接收保证，说明\enquote{离轴并保持保证接收}的选择对网格步长不敏感。这里的网格只用于近似搜索，连续候选区域仍由式\eqref{eq:q2-receive}和角度门槛定义。若一般实例的候选集为空，程序应降低工程门槛或沿$C_{\mathrm{rec}}$边界补测，但不能放宽1000\,m硬约束。
+
+第二点选择还要区分\enquote{能够收到信号}和\enquote{能够形成稳定交会}这两个条件。前者是对$F_1$中全部位置的最坏距离约束，后者是对同一位置集合上的最坏交会角约束，二者不能用一个平均距离互相替代。若首点已经返回距离过近，问题二的第二点任务自然终止；只有在正常示向度情形下，才需要移动到候选区域并再次检测。候选区域给出的是可行位置集合，表中的坐标则是该集合在指定网格上的一个选择。
+
+排序式中的距离惩罚系数只用于平衡移动距离和交会角，角度统一按度数记录，距离统一按米记录。它不代表概率，也不参与真实源位置的删除。这样，改变系数只会影响候选点的优先顺序，不会把不满足1000\,m保证接收的点重新纳入候选区域。
+
+\section{问题三模型的建立与求解}
+
+\subsection{问题三分析}
+
+问题三是未知频道下的全向源在线搜索。扫描点必须连续覆盖整个目标圆域，频道轮询必须覆盖所有可能的频道，定位和清除还要始终保留真实源。本文先求规则环族的极小极大扫描集\textsuperscript{\normalfont\cite{kershner}}，再将问题一的集合定位和问题二的保证接收思想嵌入在线流程。计算时先完成连续发现，再进行保守定位和服务点选择。扫描路线可以滚动调整，但不能删除七点环中的必要扫描点。
+
+\subsection{七点无圆心连续覆盖}
+
+设$n$个等角点构成半径为$a$的正多边形环
+\begin{equation}
+P_n(a)=\left\{a\vect{u}\left(\frac{2k\pi}{n}\right):k=0,\ldots,n-1\right\},\quad \alpha=\frac{\pi}{n}
+\label{eq:q3-ring}
+\end{equation}
+对任意源位置$r\vect{u}(\theta)$，选择方位最接近的环点，角差满足$|\beta|\leq\alpha$，距离平方为
+\begin{equation}
+d^2(r,\beta)=r^2+a^2-2ar\mathit{cos}\beta
+\label{eq:q3-distance}
+\end{equation}
+对固定$r$，式\eqref{eq:q3-distance}随$|\beta|$不减；对固定$\beta$，它关于$r\in[0,R]$为凸函数。因此圆域内的最坏点只可能是圆心或目标圆边界上两个相邻点的角平分点，最坏最近距离为
+\begin{equation}
+d_{\mathop{\mathit{max}}}(a,n)=\mathop{\mathit{max}}\left\{a,\sqrt{R^2+a^2-2aR\mathit{cos}\left(\frac{\pi}{n}\right)}\right\}
+\label{eq:q3-worst-distance}
+\end{equation}
+令两类最坏距离相等得到极小极大半径
+\begin{equation}
+a_n^{*}=\frac{R}{2\mathit{cos}(\pi/n)},\quad d_{\mathop{\mathit{max}}}(a_n^{*},n)=a_n^{*}
+\label{eq:q3-minimax}
+\end{equation}
+当$R=1800\,m$时，$n=7$给出$a_7^{*}=998.924638\,m$，小于最小接收半径1000\,m；$n=6$给出$a_6^{*}=1039.230485\,m$，不能完成连续覆盖。因此本文不再扫描圆心，采用7个环点。这个结论只针对无圆心正多边形环模型族，不声称任意不规则点集的全局最少点数。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\linewidth]{image3_notitle.png}
+\caption{问题三七点极小极大环的连续覆盖}
+\label{fig:q3-cover}
+\end{figure}
+
+图\ref{fig:q3-cover}中的七个接收圆覆盖目标圆域，最坏点由式\eqref{eq:q3-worst-distance}解析确定，而不是由绘图采样猜出。不设置圆心扫描点是两类最坏距离平衡后的结果，因此没有以覆盖完整性换取速度。
+
+\subsection{未知频道扫描与终止规则}
+
+扫描开始时将1至20号频道置为未解析。每个必要扫描点依次检测尚未发现的频道，频道首次返回示向度或距离过近后记为已发现。七个扫描点全部完成后，若某频道没有有效反馈，则该频道在全向模型下不存在干扰源。另一个合法提前终止条件是已发现16个不同频道，因为16是题面源数上限。不能因为暂时找到10个源或连续若干次无信号而提前停止。
+
+对于已发现但示向条数不足的频道，若当前保守域为$F_c$，且候选补测点满足
+\begin{equation}
+\mathop{\mathit{dist}}(\vect{p},F_c)>1501\,m
+\label{eq:q3-safe-skip}
+\end{equation}
+则该点到真实源必大于1500\,m，可以安全跳过。该剪枝只对已发现频道使用，未知频道仍要完成全覆盖扫描。
+
+\subsection{保守定位与保证清除}
+
+频道$c$已有$m_c$条有效示向度时，在线保守域为
+\begin{equation}
+F_c=\Omega\cap\bigcap_{i=1}^{m_c}\left[S_i(1.01°)\cap B(\vect{s}_i,1500)\right]
+\label{eq:q3-online-domain}
+\end{equation}
+理论证明仍使用题面1°误差，程序用1.01°只增加浮点包络。补测点要求$F_c$的所有顶点到该点不超过998\,m，以便在接收半径取下限时仍收到信号。对候选点，程序计算位置样本处的信息矩阵
+\begin{equation}
+I(\vect{p};\vect{x})=\sum_{\vect{s}\in O_c\cup\{\vect{p}\}}\frac{\vect{n}(\vect{s},\vect{x})\vect{n}(\vect{s},\vect{x})^{\mathsf T}}{\left\|\vect{x}-\vect{s}\right\|_2^2},\quad
+\vect{n}(\vect{s},\vect{x})=\frac{(-(x_y-s_y),x_x-s_x)^{\mathsf T}}{\left\|\vect{x}-\vect{s}\right\|_2}
+\label{eq:q3-information}
+\end{equation}
+式\eqref{eq:q3-information}只衡量视线是否退化，不被解释为题面未给出的统计协方差。
+
+当$F_c$的最小覆盖圆半径$r_c\leq19.5\,m$时，在其圆心清除必成功。为减少折返，程序在保证服务区域
+\begin{equation}
+G_c=\bigcap_{\vect{v}\in\operatorname{vert}(F_c)}B(\vect{v},19.5)
+\label{eq:q3-service}
+\end{equation}
+内搜索进出路程较短的服务点，并重新检查全部顶点。若主动定位在限定轮数内没有收敛，则使用覆盖半径$h=19.11\,m$的三角格覆盖$F_c$。平面三角格任意一点到最近格点的距离不超过$h<20\,m$，所以至少一个格点能够成功清除。这里的三角格只用于已经缩小的定位域，不承担未知频道的全域发现任务；发现仍由七点环和20个频道的轮询完成。这样可以避免把局部清除网格误当成搜索区域覆盖网格。
+
+\subsection{滚动调度与算法流程}
+
+扫描点先按从原点出发的开放路线优化。扫描中，若已发现源的估计清除点插入当前扫描边的增量路程不超过150\,m，则允许顺路试探，否则保持覆盖扫描。发现阶段结束后，以各频道保守域的覆盖圆圆心构造多起点路线，并用2-opt换边降低移动距离，采用旅行商问题中的常用局部改进思路\textsuperscript{\normalfont\cite{croes,lin}}。每清除一个源便重新计算剩余任务顺序。表\ref{tab:q3-policy}概括了在线策略，表中每一行都保留了一个完整性约束。
+
+\begin{table}[H]
+\centering
+\caption{问题三在线策略}
+\label{tab:q3-policy}
+\bodytablefont
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.38}
+\begin{tabularx}{\linewidth}{*{3}{C}}
+\toprule
+步骤 & 操作 & 完整性约束 \\
+\midrule
+1 & 生成七点环并规划开放路线 & 最坏距离小于1000\,m \\
+2 & 扫描未发现频道，补测已发现频道 & 未知频道不得剪枝 \\
+3 & 更新角楔交和距离上界，必要时补测 & 每次裁剪保留真源 \\
+4 & 满足服务域则清除，否则有限试探 & 试探失败不删可行域 \\
+5 & 定位未收敛时执行三角格兜底 & 至少一个格点距真源小于20\,m \\
+6 & 清除后重排，全部完成后退出 & 资源不足时记录失败状态 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+表\ref{tab:q3-policy}说明，路径优化只发生在已固定的扫描和清除安全层上。由式\eqref{eq:q3-minimax}可知全向源必在七点扫描中被发现，由式\eqref{eq:q3-online-domain}可知有界误差不会排除真源，由式\eqref{eq:q3-service}或三角格可知已发现源最终存在成功清除点。在题面理想规则，数值计算有效且接口正常的条件下，算法可以给出条件性的完整清除保证。这个保证不等于每一局都能在限定程序运行时间内结束，后者还取决于源的位置，频道顺序，路线长度和接口剩余时间。
+
+\subsection{离线验证与结果分析}
+
+先在60个独立合成案例上比较无圆心七点环与\enquote{圆心加七个环点}的布局。两种布局最低合成清除比例均为100\%，七点环相对旧布局逐局平均降时1.5796\%，Bootstrap区间为0.7879\%至2.3717\%，其中42局更快，18局更慢。这里的区间采用Bootstrap重抽样方法计算\textsuperscript{\normalfont\cite{efron}}。随后在50个独立留出案例上比较冻结前基线与终版策略，结果列于表\ref{tab:q3-results}。
+
+\begin{table}[H]
+\centering
+\caption{问题三50局独立留出验证}
+\label{tab:q3-results}
+\bodytablefont
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.38}
+\begin{tabularx}{\linewidth}{*{3}{C}}
+\toprule
+指标 & 冻结前基线 & 终版策略 \\
+\midrule
+最低合成清除比例 & 100.0\% & 100.0\% \\
+平均每源时间\,s/个 & 310.642 & 297.205 \\
+每源时间P95\,s/个 & 389.53 & 372.20 \\
+逐局平均降时 & 0.0000\% & 4.1550\% \\
+Bootstrap 95\%区间 & 无 & 2.7846\%至5.3846\% \\
+更快局数 & 无 & 42/50 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+表\ref{tab:q3-results}给出的是同案例配对比较，终版平均每源时间减少13.437\,s，且50局均完成合成清除。图\ref{fig:q3-validation}把平均每源时间和P95并列展示，图中终版的两个柱值都低于基线，说明收益不只来自少数异常快案例。上述结果只适用于已记录的合成留出集，不替代官方隐藏测试成绩。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\linewidth]{image4.png}
+\caption{问题三独立留出验证的每源时间比较}
+\label{fig:q3-validation}
+\end{figure}
+
+图\ref{fig:q3-validation}的左图和右图分别对应平均每源时间与P95。两项指标都下降，说明安全剪枝和滚动调度同时减少了平均动作开销与尾部开销，但不能由此推出未知官方分布上的固定增益。
+
+\subsection{完整性判据与时间项分解}
+
+问题三的在线程序可以按发现，定位和清除三个状态理解。发现状态只判断某个频道是否已经得到有效反馈，不能因一次无信号就删除尚未查完的频道；定位状态保存该频道的角楔交与距离外包络，补测点必须先通过保证接收检查；清除状态只有在服务区域或三角格兜底给出距离保证后才发送清除指令。状态由接口返回值推进，路线优化只调整待访问任务的顺序。
+
+对全向源，七点环把\enquote{可能存在的源}对应到有限个必须访问的扫描点。式\eqref{eq:q3-worst-distance}控制了目标圆域内任意位置到最近扫描点的最大距离，所以源位于两个扫描点的分界线上时，仍至少有一个扫描点落在接收半径内。频道仍需从1至20号逐一检查，除非已经发现16个不同频道。这两个停止条件分别对应频道全集查完和题面给出的源数上限，不能用实验中常见的源数下限10替代。
+
+时间按题面规定的动作逐项累计。移动距离，测量次数，切频次数以及成功和失败清除的固定耗时分别对应式\eqref{eq:time}中的五项。只有在能够证明某个补测点距保守域超过1501\,m时，安全剪枝才会跳过该点；2-opt和有限前瞻也不改变七点覆盖及三角格兜底。因此，表\ref{tab:q3-results}中的时间下降来自减少无效移动和重复动作，不是少做必要扫描或放宽清除距离。
+
+\subsection{正式测试记录}
+
+问题三的三次正式测试已通过模拟器完成并导出。本文已收到三份原始加密行为日志及其结果元数据，表\ref{tab:q3-formal}列出对应的案例编码和统计结果。表中时间单位为s；平均定位清除时间按定位清除总时间除以清除个数计算，程序运行时间按题面定义从\texttt{/enter}成功到测试结束计算。
+
+\begin{table}[H]
+\centering
+\caption{问题三正式测试结果}
+\label{tab:q3-formal}
+\bodytablefont
+\setlength{\tabcolsep}{1.5pt}
+\renewcommand{\arraystretch}{1.38}
+\begin{tabularx}{\linewidth}{*{4}{C}}
+\toprule
+测试案例编码 & 清除数 & 平均时间/s & 程序时间/s \\
+\midrule
+测试1：\texttt{CAMG-\allowbreak{}7ANU-\allowbreak{}CEBJ-\allowbreak{}ZRND} & 11 & 319.136 & 22.539 \\
+测试2：\texttt{V8UP-\allowbreak{}GNKA-\allowbreak{}8C3S-\allowbreak{}9VU4} & 11 & 303.959 & 23.874 \\
+测试3：\texttt{WGX6-\allowbreak{}PYRE-\allowbreak{}SSME-\allowbreak{}S6NQ} & 16 & 239.219 & 22.604 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+表\ref{tab:q3-formal}中的案例编码和三项统计结果来自模拟器正式测试记录，并与支撑材料中的原始日志及结果元数据对应。\texttt{.jlog}正文仍采用模拟器加密格式，未对原始文件作修改。表中结果不以离线实验数据或元数据起止时间差代替。
+
+\section{问题四模型的建立与求解}
+
+\subsection{问题四分析}
+
+定向源的负观测不能直接解释为频道不存在，因此问题四需要覆盖源周围的任意正向半平面。本文用原点，内环和外环组成21点扫描集，并用缩小接收圆，放大目标域的保守几何检验检查连续覆盖。发现后的正负观测只删除严格不相容的位置单元，有限前瞻和服务点选择只改变顺序。正向包围判据放在流程前端，联合观测和时间前瞻放在该判据之后。任意中间步骤计算超时，都退回到上一层保证策略。
+
+\subsection{21点正向包围扫描集}
+
+问题四采用扫描集
+\begin{equation}
+P_{21}=\{\vect{0}\}\cup\left\{996\,\vect{u}\left(\frac{2k\pi}{8}\right):k=0,\ldots,7\right\}\cup\left\{1863.756\,\vect{u}\left(\frac{2k\pi}{12}\right):k=0,\ldots,11\right\}
+\label{eq:q4-scan-set}
+\end{equation}
+为使数值检验保持保守，核验时将最小接收半径收紧为997\,m，并用包含目标圆域的720边形外包络代替目标圆域。外环半径略大于1800\,m，机器狗位置又不受目标圆域边界限制，因此外环扫描点可以正常使用。对任意源位置$\vect{z}$，若半径997\,m内的扫描点凸包包含$\vect{z}$，则任意经过$\vect{z}$的闭半平面都至少包含其中一个扫描点。该点距源不超过997\,m，小于题面给出的最小接收半径1000\,m，因此定向源至少返回一次有效结果，结果可能是示向度，也可能是距离过近。
+
+对全部21个扫描点的三点组合，代码保留三点凸包与三个997\,m内接收圆的交集，在该数值检验中得到260个非空的保守凸交集。每个交集内的位置都能由对应三点凸包表示，且距这三点均不超过997\,m；这些交集的并集覆盖了720边形外包络，按程序设定的面积容差未发现缺口。这里的计算采用平面计算几何中的凸域处理方法\textsuperscript{\normalfont\cite{sutherland,deberg}}，因此\enquote{无缺口}指在给定多边形离散和数值容差下通过了充分性检查，不把离散计算夸大为任意布局的全局最优结论。图\ref{fig:q4-cover}给出21点与目标圆域的位置关系，其中内环负责中心区域的局部正向包围，外环承担边界位置的连续覆盖。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.54\linewidth]{image5_notitle.png}
+\caption{问题四21点扫描集的连续覆盖与正向包围}
+\label{fig:q4-cover}
+\end{figure}
+
+图\ref{fig:q4-cover}显示内环和外环均留有小于接收半径的几何余量。这个图只作结构展示，连续性结论来自上述260个保守凸交集的并集核验，而不是来自图像上的离散采样。
+
+\subsection{正负观测的联合相容域}
+
+设某个位置单元的源位置为$\vect{z}$，有效接收半径为$\rho\in[1000,1500]$，定向发射方向为单位向量$\vect{u}$。若接口返回示向度，正观测在几何上要求距离不超过$\rho$，并要求测向误差落在角楔内；若接口返回距离过近，则转入清除状态，不再人为补造示向度。负观测只能排除同时满足\enquote{距离不超过$\rho$}和\enquote{检测点位于发射半平面}的全部假设。程序把半径和方向划分为有限候选单元，并仅删除可以证明与所有候选均不相容的单元。其抽象写法为
+\begin{equation}
+\mathcal{H}_{c}=\left\{(\vect{z},\rho,\vect{u}):\vect{z}\in\Omega,\ 1000\leq\rho\leq1500,\ \vect{u}\in\mathbb{S}^{1},\ \text{所有观测均相容}\right\}
+\label{eq:q4-compatible}
+\end{equation}
+若某单元未被严格证明为空，则保留其位置投影并作凸包外包络。对一般示向度反馈，实际距离上界仍由1500\,m控制，不能直接收紧为1000\,m；997\,m只用于扫描集连续充分性检查所提供的安全余量。
+
+\subsection{有限前瞻与安全服务点}
+
+在硬约束筛选后，程序从位置域内部样本，半径区间和相容方向弧构造有限假设集$H$，估计下一动作的代理代价
+\begin{equation}
+\widehat{C}(\vect{p})=\frac{\left\|\vect{p}-\vect{x}_{\mathrm{now}}\right\|_2}{5}+5+I_{\mathrm{sw}}+\sum_{h\in H}w_h\widehat{C}_{\mathrm{after}}(\vect{p},h),\quad\sum_{h\in H}w_h=1
+\label{eq:q4-lookahead}
+\end{equation}
+其中$H$是有限的候选状态集，$w_h$是用于排序的非负权重，$I_{\mathrm{sw}}$取0或1\,s，分别表示保持当前频道或需要切换频道。只有当新候选相对几何首选至少节省3\,s代理时间时才调整顺序。权重不是官方概率分布，也不参与位置删除或清除判定。
+
+保证清除仍使用式\eqref{eq:q3-service}的服务区域。若定位域半径不超过100\,m，程序允许有限次数的中心线交点试探；单示向度和疑似背向时采用对称探针或二分恢复。试探失败后仍保留测向信息并返回保守域，最终用19.11\,m三角格兜底。发现阶段若插入清除点的增量路程不超过200\,m才顺路尝试，避免用估计点破坏全域扫描顺序。
+
+\subsection{问题四验证结果}
+
+先在同案例上比较21点连续覆盖核验布局和25点紧凑布局。两者最低合成清除比例均为100\%，21点布局平均每源时间为536.321\,s，25点布局为550.914\,s，按两组均值计算前者降低2.649\%。在冻结终版上，55局分层重放和另一组24局共享误差压力集的配对结果列于表\ref{tab:q4-results}。
+
+\begin{table}[H]
+\centering
+\caption{问题四终版配对离线结果}
+\label{tab:q4-results}
+\bodytablefont
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.38}
+\begin{tabularx}{\linewidth}{*{3}{C}}
+\toprule
+指标 & 21点基线 & 最终组合 \\
+\midrule
+最低合成清除比例 & 100.0\% & 100.0\% \\
+55局平均时间/s & 6725.841 & 6644.145 \\
+55局平均每源时间/s & 546.385 & 540.366 \\
+55局每源时间P95/s & 733.738 & 729.622 \\
+55局配对降时 & 0.000\% & 1.157\% \\
+24局压力集配对降时 & 0.000\% & 1.126\% \\
+发现集合错误与真源排除 & 0 & 0 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+表\ref{tab:q4-results}显示，两组实验均维持100\%合成清除，最终组合在55局中49局更快，6局更慢，另一组24局共享误差压力集全部更快。图\ref{fig:q4-validation}把两组的平均时间和逐局降幅放在一起，收益存在场景波动，但没有以合成漏源换取时间。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.74\linewidth]{image6.png}
+\caption{问题四重放集与共享误差压力集的配对验证}
+\label{fig:q4-validation}
+\end{figure}
+
+图\ref{fig:q4-validation}左图显示两组平均总时间均下降，右图显示55局重放存在少量负收益而另一组24局共享误差压力集全部为正。由此只能说明当前安全细化在给定合成场景中具有平均收益，不能把区间解释为官方隐藏案例的置信保证。
+
+\begin{table}[H]
+\centering
+\caption{问题四24局共享误差压力集消融结果}
+\label{tab:q4-ablation}
+\bodytablefont
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.38}
+\begin{tabularx}{\linewidth}{*{5}{C}}
+\toprule
+策略 & 最低清除率 & 平均时间/s & 配对降时 & 快/慢/同 \\
+\midrule
+基线 & 100.0\% & 6690.175 & 0.000\% & 0/0/24 \\
+仅安全服务点 & 100.0\% & 6680.275 & 0.148\% & 24/0/0 \\
+仅联合约束 & 100.0\% & 6647.505 & 0.630\% & 12/4/8 \\
+联合约束+安全点 & 100.0\% & 6638.592 & 0.762\% & 24/0/0 \\
+最终组合 & 100.0\% & 6616.262 & 1.126\% & 24/0/0 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+表\ref{tab:q4-ablation}说明联合约束贡献了主要收益，安全服务点和有限前瞻进一步减少路线开销。图\ref{fig:q4-ablation}也显示三个细化模块组合后收益最高，但模块之间共享状态，收益不能简单相加。消融结果的作用是解释机制，正向发现的安全条件仍由式\eqref{eq:q4-scan-set}和三角格兜底保证。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\linewidth]{image7_notitle.png}
+\caption{问题四安全细化模块的消融结果}
+\label{fig:q4-ablation}
+\end{figure}
+
+图\ref{fig:q4-ablation}把逐层细化的平均降时列出，最终组合为1.126\%。由于所有策略的最低合成清除比例均为100\%，该图的比较对象是时间，而不是安全性。
+
+\subsection{正向包围判据的推导}
+
+设源位置为$\vect{z}$，把距离不超过997\,m的扫描点记为$P(\vect{z})$。这里要确认的是$\vect{z}\in\operatorname{conv}P(\vect{z})$，并非要求某一个固定扫描点适应所有发射方向。在平面中，凸包表示最多需要三个点，所以代码逐组三点计算凸包与三个内接收圆的交集，再合并所有非空结果。这个局部判据把“距离足够近”和“方向不可能同时背向”放在同一个几何条件中，正是普通圆覆盖在问题四中不够用的原因。
+
+若$\vect{z}$属于其中一个三点凸交集，则存在不超过三个点$\vect{p}_j$及权重$\lambda_j$，使得
+\begin{equation}
+\vect{z}=\sum_{j=1}^{k}\lambda_j\vect{p}_j,\qquad
+\lambda_j\geq0,\qquad
+\sum_{j=1}^{k}\lambda_j=1,\qquad k\leq3
+\label{eq:q4-convex-proof}
+\end{equation}
+任取定向源的发射方向单位向量$\vect{u}$。如果这些点都位于源的背向开半平面，则$(\vect{p}_j-\vect{z})\cdot\vect{u}<0$对所有$j$成立。将式\eqref{eq:q4-convex-proof}移项并取内积，可得
+\begin{equation}
+0=\sum_{j=1}^{k}\lambda_j(\vect{p}_j-\vect{z})\cdot\vect{u}<0
+\label{eq:q4-contradiction}
+\end{equation}
+这显然不成立。因此至少有一个扫描点满足$(\vect{p}_j-\vect{z})\cdot\vect{u}\geq0$。该点距源不超过997\,m，小于题面最小接收半径1000\,m，所以它位于可接收的正向半平面内。等号对应定向方向两侧各90°的边界，题面将该边界计入有效覆盖角。
+
+由此可见，问题四需要正向包围判据，普通圆覆盖并不够。圆覆盖只能说明\enquote{有一个近点}，不能说明这个点位于定向源的发射半平面；凸包包含关系同时约束了距离和方向。21点方案的安全层也因此与联合正负观测，有限前瞻分开，后两者可以减少定位和路线时间，却不能替代全域扫描判据。
+
+\subsection{正式测试记录}
+
+问题四的三次正式测试已通过模拟器完成并导出。本文已收到三份原始加密行为日志及其结果元数据，表\ref{tab:q4-formal}列出对应的案例编码和统计结果。表中时间单位为s；平均定位清除时间按定位清除总时间除以清除个数计算，程序运行时间按\texttt{/enter}成功到测试结束计算。
+
+\begin{table}[H]
+\centering
+\caption{问题四正式测试结果}
+\label{tab:q4-formal}
+\bodytablefont
+\setlength{\tabcolsep}{1.5pt}
+\renewcommand{\arraystretch}{1.38}
+\begin{tabularx}{\linewidth}{*{4}{C}}
+\toprule
+测试案例编码 & 清除数 & 平均时间/s & 程序时间/s \\
+\midrule
+测试1：\texttt{PP5A-\allowbreak{}RCZ2-\allowbreak{}JVUT-\allowbreak{}69T7} & 11 & 567.883 & 53.870 \\
+测试2：\texttt{WYQT-\allowbreak{}GA22-\allowbreak{}Z34D-\allowbreak{}WTTG} & 12 & 559.197 & 51.663 \\
+测试3：\texttt{URKU-\allowbreak{}4C9V-\allowbreak{}9R5H-\allowbreak{}2KFN} & 10 & 629.049 & 52.978 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+表\ref{tab:q4-formal}中的案例编码和三项统计结果来自模拟器正式测试记录，并与支撑材料中的原始日志及结果元数据对应。现有日志正文是加密行为记录，未对原始文件作修改；表中结果不以离线实验数据或元数据起止时间差代替。
+
+\section{模型评价与推广}
+
+\subsection{证据分层与离线实验的统计解释}
+
+本文按结论性质安排证据。问题三的闭式极小极大覆盖推导，以及问题四在给定21点布局，997\,m检验半径和720边形外包络下的保守凸交集并集检查，用于判断理想题面条件下是否存在漏检位置。固定种子的离线回归只用于检查程序实现，比较虚拟时间和暴露脆弱场景。官方接口演练用于核对通信链路，正式测试结果则必须以模拟器界面和原始日志为准。
+
+问题三和问题四的离线验证均采用同案例配对比较，使布局差异不会掩盖策略差异。比较时同时报告平均值，Bootstrap区间，胜负局数，P95和最坏变化，表\ref{tab:q3-results}和表\ref{tab:q4-results}也保留完整清除比例。这里的区间只描述当前合成案例中的平均配对差，不能解释为官方隐藏案例总体的置信保证。问题三有少数负收益案例，问题四的55局重放中也有变慢局，这说明时间启发式仍然依赖场景。
+
+离线模拟器复现题面可见的运动，检测，切频，清除，接收半径和固定位置误差规则。压力集另外加入边界源，最小接收半径，固定极限误差和共享位置误差，用于检验安全层的余量，但这些构造不等同于官方隐藏生成器。随机回归负责发现程序错误和比较版本，连续覆盖的安全判断仍由解析推导或保守几何检查承担。
+
+\subsection{鲁棒性与误差来源分析}
+
+(1) 有界误差与工程余量。题面给出的示向误差是确定性界$[-1^\circ,1^\circ]$而不是标准差，问题一和问题二的数学模型统一使用$1^\circ$。在线程序使用$1.01^\circ$只是在浮点边界处扩大包络，不会提高点估计精度，代价是可能增加少量补测或兜底清除点。接收半径下限1000\,m用于问题二的保证再次接收，问题三的圆覆盖和问题四的定向发现，上限1500\,m用于正观测后的保守定位域。若把正观测一律收紧为1000\,m，可能排除真实源；若只使用1500\,m，则会增加后续筛选范围和移动开销。
+
+(2) 数值几何误差。问题一的圆弧边界采用内外正多边形夹逼，圆盘边数加倍时，直径夹逼宽度约缩小到原来的四分之一。问题四的检查反向设置安全余量，将目标域扩大，把接收半径收紧到997\,m，并使用内接多边形表示接收圆，因此数值近似不容易把真实缺口误判为覆盖。对21点布局，代码逐组三点计算凸包与接收圆的交集，得到260个非空保守凸交集，并记录并集覆盖和未覆盖面积。由于该过程仍包含多边形离散和数值容差，本文把它表述为给定检验设置下的充分性检查，不把结果扩展为任意布局的全局最优结论。
+
+失败清除点也纳入安全处理。问题四的联合约束只在该点与候选位置的距离关系能够排除相容状态时才使用，不能因为一次失败就删除整个位置域。直接授权清除时使用的最小覆盖圆半径为19.5\,m，主动定位未收敛时使用覆盖半径19.11\,m的三角格，两者均小于题面20\,m的成功阈值。若试探失败，程序保留测向信息并回到保守位置域。
+
+(3) 现实时间和接口风险。虚拟时间由式\eqref{eq:time}逐项计算，程序实际运行时间还会受到网络延迟，模拟器负载和几何计算量影响。终版保留动作上限，请求幂等标识，截止时间和退出预留，规划预算不足时回到安全候选。这个机制可以避免启发式搜索耗尽全部运行时间，但不能保证长期断网，接口异常或外部强制终止时仍能完成任务。本文只讨论题面理想规则和接口正常时的条件性完整清除。
+
+\subsection{模型优点}
+
+(1) 模型将完整性和时间优化分层。问题三的七点解析覆盖和问题四的21点正向包围负责发现，集合外包络和三角格负责清除，2-opt，服务点和有限前瞻只改变访问顺序。启发式判断出现偏差时，主要代价是多移动或多检测，而不是把真实源从安全集合中删除。
+
+(2) 四个问题使用同一套集合语言衔接。问题一给出闭角楔，可行域直径和最小覆盖圆，问题二把一次可行域变成保证接收区域，问题三加入全向连续覆盖，问题四把距离覆盖推广为任意发射半平面下的正向包围。1000\,m下限，1500\,m上限，1°误差和20\,m清除半径在各问中的角色保持一致。
+
+(3) 数值证据有明确边界。解析式负责连续性，计算机辅助检验负责复杂几何，固定种子回归负责代码比较，官方演练负责接口核对。表\ref{tab:q3-results}和表\ref{tab:q4-results}同时报告平均值，尾部指标和完整清除情况，避免只挑选最好的一次运行。
+
+\subsection{模型局限}
+
+(1) 问题三只在无圆心正多边形环族内得到七点可行的最小点数结论，问题四只在给定的21点布局和保守几何检验设置下验证其可行性。本文尚未得到任意不规则点集的全局最少点数，也没有得到带反馈路径优化的全局最短时间。更强的结论需要研究局部正向覆盖数和自适应路径的下界。
+
+(2) 问题四的260个保守凸交集比问题三的解析公式更难人工逐行核查。后续可以按旋转对称性把这些交集归并为少数基本区域，并为每类区域给出显式不等式，以减少计算机辅助检验的审计成本。
+
+(3) 问题二的30°门槛，问题三和问题四的有限前瞻权重来自工程排序，不来自官方案例分布。它们不改变1000\,m接收保证和20\,m清除保证，但效率收益会随隐藏案例分布变化。正式测试统计应以模拟器结果页和原始日志核验，离线平均秒数只能作为调参证据。
+
+(4) 完整性以题面参数界和接口正常为条件。若示向误差超过1°，接收半径低于1000\,m，清除判据改变，或现实时间被异常网络和系统负载耗尽，原有覆盖判据不再适用。程序可以记录一部分异常，但不能把超出题面的故障纳入无条件保证。
+
+\subsection{灵敏度与模型推广}
+
+(1) 误差半角和接收半径下限直接控制安全层尺度。可以在保留确定性外包络的前提下引入分层误差界，并将概率信息只用于排序。
+
+(2) 外环点数和内环半径可以作为整数变量，与正向包围判据一起构成新的混合优化问题。接收下限改变时，必须重新计算环点数，外环半径和凸交集并集，不能直接沿用21点布局。
+
+(3) 网格步长主要影响候选点数量，服务点和有限前瞻参数主要影响时间。后续可以把机器狗的实时剩余时间纳入滚动规划，在预算不足时自动选择最小安全覆盖动作。
+
+各参数的影响可以分为安全层和效率层。示向误差半角增大时，每条角楔向两侧张开，多次观测的交集只会扩大或保持不变，单次观测域也会扩大；问题一的直径，问题二的保证接收区域以及问题三，问题四的补测次数都会随之变化。误差界不能依据离线样本随意缩小，因为平均定位误差不能替代题面给出的最坏误差界。
+
+接收半径下限直接决定扫描集的尺度。问题三中，七点环的半径和最坏距离由目标圆半径与环点数共同决定，六点布局已经超过1000\,m，不能为了缩短路线删去一个环点。问题四中，997\,m只是低于1000\,m的计算检验半径，内环的996\,m和外环的边界余量也都围绕这一安全尺度设置。若接收下限改变，就要重新计算环点数，外环半径和凸交集并集，不能直接沿用21点布局。
+
+离散化参数只影响计算精度，不改变题面模型。问题一的圆盘边数，问题四的720边形边数以及接收圆的内接多边形边数越大，保守检验越接近真实边界，计算量也越大。本文用内接和外切多边形夹逼问题一的圆盘，用外包络处理问题四的目标圆，并在误差过大时增加边数复核。这样，精度不足会表现为区间过宽或检验不通过，不会被程序悄悄改写成一个看似精确的坐标。
+
+效率参数都在安全判据之后发挥作用。机器狗速度，切频时间和检测时间直接进入式\eqref{eq:time}，源数和频道占用情况决定必须执行的扫描次数；2-opt，有限前瞻和服务点选择只减少路线或重复动作。现实接口出现延迟，返回格式异常或剩余时间不足时，程序应先停止启发式搜索，保留当前保守域并主动退出。这样记录出的退化状态，不能被解释成离线时间优势对正式测试的保证。
+
+本文把\enquote{发现完整}和\enquote{在时间窗口内完成}分开报告。前者由七点环，21点正向包围和保守位置域控制，属于几何及接口规则下的安全判断；后者还受到频道轮询顺序，移动距离，失败清除次数和程序运行时间的影响。离线实验中的100\%清除只表示在给定合成案例和虚拟计时下找到了全部真源，不能替代表\ref{tab:q3-formal}和表\ref{tab:q4-formal}所需的正式测试统计，也不表示任意现实环境都能达到相同时间。
+
+对问题四，正负观测的作用也不是对称的。正观测可以收紧位置和方向的相容范围，负观测只有在某个位置，半径和发射方向组合下必然应该收到信号时，才足以删除该组合。若一个候选单元仍能通过改变发射方向或接收半径解释当前无信号，程序就保留它。这个处理会增加后续测量，但能避免把定向源的背向状态误判成频道不存在。
+
+模型推广时，外环点数，内环半径和接收余量应一起重新计算。只增加扫描点而不重新检查三点凸交集，不能保证正向包围；只缩小清除域而不核对接口计时，也不能保证程序在时间窗口内退出。实际使用中可以把几何检验结果，剩余程序时间和当前未清除频道数作为滚动规划的输入，在安全约束不变的前提下调整访问顺序。
+
+\section*{AI工具使用声明}
+
+本参赛队在竞赛过程中使用了AI工具，主要用于语言润色，代码调试和排版检查，详细使用情况见支撑材料。
+
+\begin{thebibliography}{99}
+\small\raggedright
+\bibitem{sutherland} SUTHERLAND I E, HODGMAN G W. Reentrant polygon clipping[J]. Communications of the ACM, 1974, 17(1): 32-42. DOI: 10.1145/360767.360802.
+\bibitem{welzl} WELZL E. Smallest enclosing disks[C]//New Results and New Trends in Computer Science. Berlin: Springer, 1991: 359-370. DOI: 10.1007/BFb0038202.
+\bibitem{bishop} BISHOP A N, FIDAN B, ANDERSON B D O, et al. Optimality analysis of sensor-target localization geometries[J]. Automatica, 2010, 46(3): 479-492. DOI: 10.1016/j.automatica.2009.12.003.
+\bibitem{kershner} KERSHNER R. The number of circles covering a set[J]. American Journal of Mathematics, 1939, 61(3): 665-671. DOI: 10.2307/2371320.
+\bibitem{croes} CROES G A. A method for solving traveling-salesman problems[J]. Operations Research, 1958, 6(6): 791-812. DOI: 10.1287/opre.6.6.791.
+\bibitem{lin} LIN S, KERNIGHAN B W. An effective heuristic algorithm for the traveling-salesman problem[J]. Operations Research, 1973, 21(2): 498-516. DOI: 10.1287/opre.21.2.498.
+\bibitem{efron} EFRON B. Bootstrap methods: Another look at the jackknife[J]. The Annals of Statistics, 1979, 7(1): 1-26. DOI: 10.1214/aos/1176344552.
+\bibitem{deberg} DE BERG M, CHEONG O, VAN KREVELD M, et al. Computational Geometry: Algorithms and Applications[M]. 3rd ed. Berlin: Springer, 2008. DOI: 10.1007/978-3-540-77974-2.
+\end{thebibliography}
+
+\clearpage
+\appendix
+\titleformat{\section}
+  {\centering\heiti\fontsize{14pt}{20pt}\selectfont}
+  {附录\Alph{section}}{1em}{}
+\section{支撑材料文件列表}
+
+\begin{table}[H]
+\centering
+\caption{支撑材料文件列表}
+\label{tab:materials}
+\bodytablefont
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.38}
+\begin{tabularx}{\linewidth}{C C}
+\toprule
+文件名 & 用途说明 \\
+\midrule
+\texttt{robot.py} & 机器狗策略主程序和HTTP接口 \\
+\texttt{geometry.py} & 角楔、半平面、凸域和覆盖几何 \\
+\texttt{offline\_sim.py} & 离线确定性回归模拟器 \\
+\texttt{q4\_refinement.py} & 问题四联合约束和细化模块 \\
+\texttt{run\_experiments.py} & 几何实验和批量实验入口 \\
+\texttt{test\_solution.py} & 解答验证套件 \\
+\path{benchmark_q3_improvements.py} & 问题三改进策略实验 \\
+\path{benchmark_q4_improvements.py} & 问题四改进实验 \\
+\texttt{README.md} & 支撑材料说明和结果边界 \\
+\texttt{提交说明.txt} & 打包说明和运行依赖 \\
+\texttt{AI工具使用详情.pdf} & AI工具使用过程和人工核验说明 \\
+\path{tools/make_flowcharts.py} & 总体流程图生成脚本 \\
+\path{formal_test_records.csv} & 正式测试编码和核验状态 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\clearpage
+\section{完整源程序代码}
+\input{appendix-code.tex}
+
+\end{document}

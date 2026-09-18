@@ -1,0 +1,7 @@
+problem,test,case_code,raw_log,result_metadata,cleared_count,average_localization_clear_time_s,program_runtime_s,status
+3,1,CAMG-7ANU-CEBJ-ZRND,formal-p3-1-CAMG-7ANU-CEBJ-ZRND.jlog,formal-p3-1-CAMG-7ANU-CEBJ-ZRND.result.json,11,319.136,22.539,已补入正式测试记录
+3,2,V8UP-GNKA-8C3S-9VU4,formal-p3-2-V8UP-GNKA-8C3S-9VU4.jlog,formal-p3-2-V8UP-GNKA-8C3S-9VU4.result.json,11,303.959,23.874,已补入正式测试记录
+3,3,WGX6-PYRE-SSME-S6NQ,formal-p3-3-WGX6-PYRE-SSME-S6NQ.jlog,formal-p3-3-WGX6-PYRE-SSME-S6NQ.result.json,16,239.219,22.604,已补入正式测试记录
+4,1,PP5A-RCZ2-JVUT-69T7,formal-p4-1-PP5A-RCZ2-JVUT-69T7.jlog,formal-p4-1-PP5A-RCZ2-JVUT-69T7.result.json,11,567.883,53.870,已补入正式测试记录
+4,2,WYQT-GA22-Z34D-WTTG,formal-p4-2-WYQT-GA22-Z34D-WTTG.jlog,formal-p4-2-WYQT-GA22-Z34D-WTTG.result.json,12,559.197,51.663,已补入正式测试记录
+4,3,URKU-4C9V-9R5H-2KFN,formal-p4-3-URKU-4C9V-9R5H-2KFN.jlog,formal-p4-3-URKU-4C9V-9R5H-2KFN.result.json,10,629.049,52.978,已补入正式测试记录

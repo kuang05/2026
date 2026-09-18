@@ -1,0 +1,57 @@
+{
+  "problem": 3,
+  "coverage_method": "7-point disk cover",
+  "scan_point_count": 7,
+  "q3_policy": {
+    "layout": "legacy",
+    "ring_sides": 7,
+    "discovery_directions": 1,
+    "entry_candidates": false,
+    "information_floor_fraction": 0.0
+  },
+  "q4_policy": null,
+  "discovered_channels": [
+    1,
+    2,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    15,
+    17,
+    18
+  ],
+  "absent_channels": [
+    3,
+    5,
+    12,
+    13,
+    14,
+    16,
+    19,
+    20
+  ],
+  "cleared_channels": [
+    1,
+    2,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    15,
+    17,
+    18
+  ],
+  "unclearable_channels": [],
+  "cleared_count": 12,
+  "actions": 116,
+  "virtual_time_s": 5079.3386182561335,
+  "program_runtime_s": 2.623105500009842,
+  "failure": null
+}

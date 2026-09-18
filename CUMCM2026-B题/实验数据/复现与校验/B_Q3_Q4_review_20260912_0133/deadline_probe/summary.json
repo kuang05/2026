@@ -1,0 +1,22 @@
+{
+  "problem": 3,
+  "coverage_method": "8-point optimized ring cover",
+  "scan_point_count": 1,
+  "q3_policy": {
+    "layout": "ring",
+    "ring_sides": 7,
+    "discovery_directions": 2,
+    "entry_candidates": true,
+    "information_floor_fraction": 0.1
+  },
+  "q4_policy": null,
+  "discovered_channels": [],
+  "absent_channels": [],
+  "cleared_channels": [],
+  "unclearable_channels": [],
+  "cleared_count": 0,
+  "actions": 3,
+  "virtual_time_s": 5.0,
+  "program_runtime_s": 2.0,
+  "failure": null
+}
